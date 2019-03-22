@@ -1,0 +1,2 @@
+sentinelsat==0.12.2
+utm==0.4.2
