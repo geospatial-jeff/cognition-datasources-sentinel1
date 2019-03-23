@@ -21,11 +21,11 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+#      - restore_cache:
+#          keys:
+#            - v1-dependencies-{{ checksum "requirements.txt" }}
+#            # fallback to using the latest cache if no exact match is found
+#            - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -35,17 +35,15 @@ jobs:
             sudo apt-get install libspatialindex-dev
             pip install -r requirements-dev.txt
 
-      - run:
-          name: "Setup custom environment variables"
-          command: |
-            echo 'export COPERNICUS_USER="geospatialjeff"' >> $BASH_ENV
-            echo 'export COPERNICUS_PASSWORD="dummypass123"' >> $BASH_ENV
+#      - run:
+#          name: "Setup custom environment variables"
+#          command: |
 
 
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+#      - save_cache:
+#          paths:
+#            - ./venv
+#          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       # run tests!
       # this example uses Django's built-in test-runner
